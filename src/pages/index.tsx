@@ -1,193 +1,146 @@
-import * as React from "react"
-import type { HeadFC, PageProps } from "gatsby"
-
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const doclistStyles = {
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-}
-
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
-
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  display: `inline-block`,
-  marginBottom: 24,
-  marginRight: 12,
-}
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
-
-const docLinks = [
-  {
-    text: "TypeScript Documentation",
-    url: "https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/",
-    color: "#8954A8",
-  },
-  {
-    text: "GraphQL Typegen Documentation",
-    url: "https://www.gatsbyjs.com/docs/how-to/local-development/graphql-typegen/",
-    color: "#8954A8",
-  }
-]
-
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative" as "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
-
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
-  },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
-  },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
-  },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    badge: true,
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
-  },
-]
+import * as React from "react";
+import { HeadFC, Link, PageProps } from "gatsby";
+import Footer from "../components/Footer";
+import { StaticImage } from "gatsby-plugin-image";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! 🎉🎉🎉</span>
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.tsx</code> to see this page
-        update in real-time. 😎
-      </p>
-      <ul style={doclistStyles}>
-        {docLinks.map(doc => (
-          <li key={doc.url} style={docLinkStyle}>
-            <a
-              style={linkStyle}
-              href={`${doc.url}?utm_source=starter&utm_medium=ts-docs&utm_campaign=minimal-starter-ts`}
-            >
-              {doc.text}
-            </a>
-          </li>
-        ))}
-      </ul>
-      <ul style={listStyles}>
-        {links.map(link => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter-ts`}
+    <main>
+      {/* header */}
+      <div className="navbar bg-base-100">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <a href="#What"><Link to="/">Game</Link></a>
+              </li>
+              <li>
+                <a href="#rules"><Link to="/">Rules</Link></a>
+              </li>
+              <li>
+                <Link to="/answer">Answer</Link>
+              </li>
+            </ul>
+          </div>
+          <a href="/" className="btn btn-ghost normal-case font-bold text-xl">
+            Take it.
+          </a>
+        </div>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal p-0">
+            <li>
+              <a href="#What"><Link to="/">Game</Link></a>
+            </li>
+            <li>
+              <a href="#rules"><Link to="/">Rules</Link></a>
+            </li>
+            <li>
+              <Link to="/answer">Answer</Link>
+            </li>
+          </ul>
+        </div>
+        <div className="navbar-end">
+          <a className="btn border-blue-500 bg-blue-500 hover:bg-blue-600 hover:border-blue-600">
+            Jouer
+          </a>
+        </div>
+      </div>
+
+      {/* Header */}
+      {/* Content */}
+
+      <body className="p-5">
+        <div className=" rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 grid grid-cols-1 place-content-center text-center h-48 text-white">
+          <h1 className="text-3xl font-bold justify-center  ">
+            Welcome player !
+          </h1>
+          <h2 className="text-xl">
+            You want to play <span className="font-bold"> Take it. </span>
+            Here we are !
+          </h2>
+        </div>
+
+        <div className="p-4">
+          <h2 className="text-2xl font-bold" id="What">
+            What is Take it. ?🤔
+          </h2>
+          <p>
+            Take it. is simlar to the well known game
+            <span className="font-bold text-green-800"> Jungle Speed</span>.
+            Created by 4 students of MydigitalSchool of Rennes, the great idea
+            of Take it. was born.
+          </p>
+        </div>
+        <div className="p-4">
+          <h2 className="text-2xl font-bold">Game setup</h2>
+          <p>
+            A deck with the 150 cards is in the center of the table next to the
+            totem and players get ready to guess the upcoming brand including
+            taking the totem.
+          </p>
+        </div>
+        <div className="p-4">
+          <h2 className="text-2xl font-bold" id="rules">
+            Rules
+          </h2>
+          <p>
+            <ul className="list-disc px-5">
+              <li>
+                The player that guess the right brand and that took the totem
+                earn a point (a card)
+              </li>
+              <li>
+                If the player did not guess the brand and don’t have the totem
+                he’s not winning a point
+              </li>
+              <li>
+                If the player did not guess the brand and have the totem in his
+                hand he’s losing a point
+              </li>
+              <li>The player that have thrown the totem lose a point</li>
+            </ul>
+          </p>
+        </div>
+        <div className="p-4">
+          <h2 className="text-2xl font-bold">What male up the game ?</h2>
+          <p>
+            <ul>
+              <li>150 cards</li>
+              <li>134 basic cards</li>
+              <li>5 bonus cards</li>
+              <li>5 penalties cards</li>
+              <li>5 special cards</li>
+              <li>A totem</li>
+              <li>This website 😉</li>
+            </ul>
+          </p>
+        </div>
+      </body>
+
+      <Footer />
     </main>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export const Head: HeadFC = () => <title>Take it.</title>;
