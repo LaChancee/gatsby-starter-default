@@ -6,7 +6,7 @@ import { StaticImage } from "gatsby-plugin-image";
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <main>
-      {/* header */}
+      {/* headeeer */}
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
